@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,10 +22,11 @@ import javax.swing.JTextField;
  *
  * @author mvini
  */
-public class HomeServiceView extends JFrame {
-    HomeServiceController homeservicecontroller;
+public class HomeServiceView extends JFrame implements ActionListener{
+    HomeServiceController homeservice;
     
     public HomeServiceView (HomeServiceController homeservicecontrolle){
+        this.homeservice = homeservice;
     attributesSetter();   
     components1(); 
     validation();
@@ -128,9 +131,11 @@ public class HomeServiceView extends JFrame {
         miniMainLeft.add(l4);
         l4.setBounds(40, 40, 300, 50);
  
-        JButton b3 = new JButton("CHECK");
-        miniMainLeft.add(b3);
-        b3.setBounds(140, 100, 100, 20);
+        JButton b10 = new JButton("CHECK");
+        miniMainLeft.add(b10);
+        b10.setActionCommand("b10");
+        b10.addActionListener(this);
+        b10.setBounds(140, 100, 100, 20);
         
         
         JLabel lbllog2 = new JLabel("SET AVAILABILITY");
@@ -143,6 +148,8 @@ public class HomeServiceView extends JFrame {
  
         JButton b5 = new JButton("SET");
         miniMainLeft.add(b5);
+        b5.setActionCommand("b5");
+        b5.addActionListener(this);
         b5.setBounds(140, 290, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE
@@ -172,6 +179,8 @@ public class HomeServiceView extends JFrame {
         JButton b4 = new JButton("CHECK");
         upper.add(b4);
         b4.setBounds(140, 130, 100, 20);
+        b4.setActionCommand("b4");
+        b4.addActionListener(this);
         
 
 
@@ -180,6 +189,30 @@ public class HomeServiceView extends JFrame {
         
         
         
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+                      if(e.getActionCommand().equals("b10")){
+                      this.dispose();
+                      new UpcomingServiceController();
+           
+       } 
+                          if(e.getActionCommand().equals("b5")){
+                      this.dispose();
+                      new AvailabilityServiceController();
+           
+       }
+                          if(e.getActionCommand().equals("b4")){
+                      this.dispose();
+                      new AppointStatusController();
+           
+       }
+    
+    
+    
+    
+    
     }
     
 }

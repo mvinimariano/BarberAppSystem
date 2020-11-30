@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,11 +24,12 @@ import javax.swing.JTextField;
  *
  * @author mvini
  */
-public class MyBookingsView extends JFrame implements ActionListener {
+public class MyBookingsView extends JFrame  {
     MyBookingsController mybookingscontroller;
     private JTextField TF1; // user enter barber location/name
     
     public MyBookingsView (MyBookingsController mybookingscontroller){
+        this.mybookingscontroller = mybookingscontroller;
     attributesSetter();   
     components3(); 
     validation();   
@@ -39,7 +39,7 @@ public class MyBookingsView extends JFrame implements ActionListener {
             private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Home Page");
+        this.setTitle("My Bookings");
         this.setLocationRelativeTo(null);
     }
     
@@ -143,6 +143,8 @@ public class MyBookingsView extends JFrame implements ActionListener {
         
         JButton b3 = new JButton("Search");
         miniMainLeft.add(b3);
+        b3.setActionCommand("b3");
+        b3.addActionListener(mybookingscontroller);
         b3.setBounds(140, 130, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE
@@ -189,7 +191,7 @@ public class MyBookingsView extends JFrame implements ActionListener {
         upper.add(b4);
         b4.setBounds(140, 170, 100, 20);
         b4.setActionCommand("b4");
-        b4.addActionListener(this);
+        b4.addActionListener(mybookingscontroller);
         
         
         
@@ -219,6 +221,8 @@ public class MyBookingsView extends JFrame implements ActionListener {
 
         JButton b5 = new JButton("REVIEW");
         upper.add(b5);
+        b5.setActionCommand("b5");
+        b5.addActionListener(mybookingscontroller);
         b5.setBounds(140, 340, 100, 20);
         
     
@@ -232,24 +236,12 @@ public class MyBookingsView extends JFrame implements ActionListener {
         
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-      if(e.getActionCommand().equals("b4")){
-       
-  int option = JOptionPane.showConfirmDialog(null, "Cancel your booking?", "Cancel your booking", JOptionPane.YES_NO_OPTION);
-
-if (option == 0) { 
    
-   JOptionPane.showMessageDialog(this, "Booking successfully canceled!");
-} 
-          
-          
-      }  
+ 
         
 
     
-    }
+    
         
         
         

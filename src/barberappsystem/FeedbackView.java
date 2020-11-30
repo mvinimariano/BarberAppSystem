@@ -30,6 +30,7 @@ public class FeedbackView extends JFrame{
     private JTextArea feedback; // feedback field
     
     public FeedbackView (FeedbackController feedbackcontroller){
+        this.feedbackcontroller = feedbackcontroller;
     attributesSetter();   
     components2(); 
     validation();   
@@ -39,7 +40,7 @@ public class FeedbackView extends JFrame{
         private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Home Page");
+        this.setTitle("Feedback");
         this.setLocationRelativeTo(null);
     }
     
@@ -143,6 +144,9 @@ public class FeedbackView extends JFrame{
         
         JButton b3 = new JButton("Search");
         miniMainLeft.add(b3);
+        b3.setActionCommand("b3");
+        b3.addActionListener(feedbackcontroller);
+        
         b3.setBounds(140, 130, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE

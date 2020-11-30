@@ -7,6 +7,7 @@ package barberappsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,9 +19,9 @@ public class LoginController implements ActionListener{
     
     
         public LoginController(){
-        
+        this.loginview = loginview;
         this.loginview = new LoginView (this);
-//        this.model = new Model();
+
   
 }
     
@@ -31,7 +32,24 @@ public class LoginController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+              if(e.getActionCommand().equals("b4")){
+      JOptionPane.showMessageDialog(loginview,
+"<html>User registration successful!<br>PLEASE, LOGIN</html>",
+"Confirmation",
+JOptionPane.INFORMATION_MESSAGE);
+     }
+       if(e.getActionCommand().equals("b3")){
+                      loginview.dispose();
+//            new HomeCustumerController();
+                      new HomeServiceController();
+           
+       } 
+        
+        
+        
+        
+        
+        
     }
     
 }

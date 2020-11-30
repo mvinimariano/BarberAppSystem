@@ -24,6 +24,7 @@ public class AppointStatusView extends JFrame {
     
     
         public AppointStatusView (AppointStatusController appointstatuscontroller){
+            this.appointstatuscontroller = appointstatuscontroller; 
     attributesSetter();   
     components1(); 
      validation();   
@@ -32,7 +33,7 @@ public class AppointStatusView extends JFrame {
         private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Home Page");
+        this.setTitle("Appointment Status");
         this.setLocationRelativeTo(null);
     }
     
@@ -128,6 +129,8 @@ public class AppointStatusView extends JFrame {
  
         JButton b3 = new JButton("CHECK");
         miniMainLeft.add(b3);
+        b3.setActionCommand("b3");
+        b3.addActionListener(appointstatuscontroller);
         b3.setBounds(140, 100, 100, 20);
         
         
@@ -141,6 +144,8 @@ public class AppointStatusView extends JFrame {
  
         JButton b5 = new JButton("SET");
         miniMainLeft.add(b5);
+        b5.setActionCommand("b5");
+        b5.addActionListener(appointstatuscontroller);
         b5.setBounds(140, 290, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE

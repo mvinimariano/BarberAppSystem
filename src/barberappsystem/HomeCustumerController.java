@@ -7,6 +7,7 @@ package barberappsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +19,8 @@ public class HomeCustumerController implements ActionListener {
     
     
      public HomeCustumerController(){
-        
+         
+        this.homecustomerView = homecustomerView;
         this.homecustomerView = new HomeCustumerView(this);
 
   
@@ -29,7 +31,18 @@ public class HomeCustumerController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       if(e.getActionCommand().equals("b10")){
+                      homecustomerView.dispose();
+            new HomeCustumerController2();
+           
+       } 
+             if(e.getActionCommand().equals("b4")){
+                      homecustomerView.dispose();
+            new MyBookingsController();
+           
+       }  
+       
+       
     }
     
 }

@@ -31,6 +31,7 @@ public class DateTimeCustomerView extends JFrame implements ActionListener{
     DateTimeCustomerController datetimecustomercontroller;
     
     public DateTimeCustomerView (DateTimeCustomerController datetimecustomercontroller){
+        this.datetimecustomercontroller = datetimecustomercontroller;
     attributesSetter();   
     components2(); 
     validation();   
@@ -41,7 +42,7 @@ public class DateTimeCustomerView extends JFrame implements ActionListener{
         private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Home Page");
+        this.setTitle("Pick a Date and Time");
         this.setLocationRelativeTo(null);
     }
     
@@ -146,6 +147,8 @@ public class DateTimeCustomerView extends JFrame implements ActionListener{
         
         JButton b3 = new JButton("Search");
         miniMainLeft.add(b3);
+        b3.setActionCommand("b3");
+        b3.addActionListener(datetimecustomercontroller);
         b3.setBounds(140, 130, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE

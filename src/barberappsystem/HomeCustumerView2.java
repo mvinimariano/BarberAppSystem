@@ -9,36 +9,44 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author mvini
  */
-public class AvailabilityServiceView extends JFrame {
-    AvailabilityServiceController availabilityservicecontroller;
+public class HomeCustumerView2 extends JFrame {
+    private JTextField TF1; // user enter barber location/name
     
-   public AvailabilityServiceView(AvailabilityServiceController availabilityservicecontroller){
-    this.availabilityservicecontroller = availabilityservicecontroller;
-    attributesSetter();   
-    components1(); 
-     validation();   
+  HomeCustumerController2 homecustumerController2;  
+    
+  
+
+
+    public HomeCustumerView2(HomeCustumerController2 homecustumerController2) {
+  this.homecustumerController2 = homecustumerController2;
+           attributesSetter();   
+    viewBookings();
+    validation(); 
+        
+        
+        
     }
 
 
-   
+
+
+    
+    
        private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Set Availability");
+        this.setTitle("Book an Appointment");
         this.setLocationRelativeTo(null);
     }
     
@@ -46,10 +54,10 @@ public class AvailabilityServiceView extends JFrame {
         this.validate();
         this.repaint();
     }
-    
-       private void components1(){
-        
-        BorderLayout frameLayout = new BorderLayout();
+       
+              private void viewBookings(){
+
+               BorderLayout frameLayout = new BorderLayout();
         this.setLayout(frameLayout);
 
                 // TOP SECTION SETUP
@@ -124,44 +132,27 @@ public class AvailabilityServiceView extends JFrame {
       
         // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
                 
-        JLabel lbllog = new JLabel("UPCOMING APPOINTMENTS");
+        JLabel lbllog = new JLabel("BOOK AN APPOINTMENT");
         miniMainLeft.add(lbllog);
-        lbllog.setBounds(110, 10, 200, 10);
+        lbllog.setBounds(130, 10, 200, 10);
 
-        JLabel l4 = new JLabel("<html>Check your upcoming appointments and let your customer know.</html>");
+        
+        
+        JLabel l4 = new JLabel("Find your Hairdresser/Barber by name or location: ");
+        TF1 = new JTextField(15);
         miniMainLeft.add(l4);
-        l4.setBounds(40, 40, 300, 50);
- 
-        JButton b3 = new JButton("CHECK");
+        miniMainLeft.add(TF1);
+        l4.setBounds(40, 40, 300, 20);
+        TF1.setBounds(90, 80, 200, 20);
+        
+    
+        
+        JButton b3 = new JButton("SEARCH");
         miniMainLeft.add(b3);
         b3.setActionCommand("b3");
-        b3.addActionListener(availabilityservicecontroller);
-        b3.setBounds(140, 100, 100, 20);
-        
-        
-        JLabel lbllog2 = new JLabel("SET AVAILABILITY");
-        miniMainLeft.add(lbllog2);
-        lbllog2.setBounds(130, 210, 200, 10);
+        b3.addActionListener(homecustumerController2);
+        b3.setBounds(140, 130, 100, 20);
 
-        String[] colNames = {"Date","Hour","Availability"};
-        String[][] data = {
-            {"  ","  ","  "},
-                        
-        };
-        
-        JTable t = new JTable(data, colNames);
-        JScrollPane sp = new JScrollPane(t);
-        
-        
-        miniMainLeft.add(sp);
-        sp.setBounds(40, 240, 300, 60);
- 
-        JButton b5 = new JButton("SUBMIT");
-        miniMainLeft.add(b5);
-        b5.setActionCommand("b5");
-        b5.setBounds(140, 310, 100, 20);
-        b5.addActionListener(availabilityservicecontroller);
-        
         // ORGANISING RIGHT HAND SIDE
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
@@ -177,32 +168,54 @@ public class AvailabilityServiceView extends JFrame {
         
         upper.setLayout(null);
         
-        JLabel lblreg = new JLabel("APPOINTMENT STATUS");
+        JLabel lblreg = new JLabel("HAIRDRESSERS AND BARBERS: ");
         lblreg.setBounds(130, 10, 200, 10);
         upper.add(lblreg);
         
+        JLabel l5 = new JLabel("Barber 01");
+        JLabel l6 = new JLabel("Location : blabalbalbal");
+        upper.add(l5);
+        upper.add(l6);
+        l5.setBounds(40, 45, 250, 20);
+        l6.setBounds(40, 60, 250, 20);
         
-        JLabel lbl1 = new JLabel("Check your appointment status for today");
-        lbl1.setBounds(80, 80, 250, 20);
-        upper.add(lbl1);
+        JLabel l7 = new JLabel("Barber 02");
+        JLabel l8 = new JLabel("Location : blabalbalbal");
+        upper.add(l7);
+        upper.add(l8);
+        l7.setBounds(40, 85, 250, 20);
+        l8.setBounds(40, 100, 250, 20);
+        
+        JLabel l9 = new JLabel("Barber 03");
+        JLabel l10 = new JLabel("Location : blabalbalbal");
+        upper.add(l9);
+        upper.add(l10);
+        l9.setBounds(40, 125, 250, 20);
+        l10.setBounds(40, 140, 250, 20);
+        
+        JLabel l11 = new JLabel("Barber 04");
+        JLabel l12 = new JLabel("Location : blabalbalbal");
+        upper.add(l11);
+        upper.add(l12);
+        l11.setBounds(40, 165, 250, 20);
+        l12.setBounds(40, 180, 250, 20);
+        
 
-        JButton b4 = new JButton("CHECK");
+        JButton b4 = new JButton("BOOK");
         upper.add(b4);
         b4.setActionCommand("b4");
-        b4.addActionListener(availabilityservicecontroller);
-        b4.setBounds(140, 130, 100, 20);
+        b4.addActionListener(homecustumerController2);        
+        b4.setBounds(140, 230, 100, 20);
         
 
 
         
         mainArea.add(miniMainArea, BorderLayout.CENTER);
-        
-        
-        
+           
+           
+           
+           
+           
     }
-       
-       
-       
-
     
 }

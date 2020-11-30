@@ -7,6 +7,7 @@ package barberappsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public class MyBookingsController  implements ActionListener{
     
     
      public MyBookingsController(){
-        
+        this.mybookingsview = mybookingsview;
         this.mybookingsview = new MyBookingsView(this);
 
   
@@ -27,7 +28,34 @@ public class MyBookingsController  implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+               if(e.getActionCommand().equals("b5")){
+                      mybookingsview.dispose();
+            new FeedbackController();
+           
+       }          
+                    if(e.getActionCommand().equals("b3")){
+                      mybookingsview.dispose();
+                      new HomeCustumerController();
+ 
+           
+       }   
+        
+        
+        if(e.getActionCommand().equals("b4")){
+       
+  int option = JOptionPane.showConfirmDialog(mybookingsview, "Cancel your booking?", "Cancel your booking", JOptionPane.YES_NO_OPTION);
+
+if (option == 0) { 
+   
+   JOptionPane.showMessageDialog(mybookingsview, "Booking successfully canceled!");
+} 
     
+ 
+        
+    
+    
+    
+    
+    }
+    }   
 }

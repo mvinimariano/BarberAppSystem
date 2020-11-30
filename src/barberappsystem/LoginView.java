@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -25,7 +24,7 @@ import javax.swing.JTextField;
  *
  * @author mvini
  */
-public class LoginView extends JFrame implements ActionListener{
+public class LoginView extends JFrame {
     private JTextField TF1; // email login
     private JTextField TF2; // password login
     private JTextField TF3; //full name register
@@ -40,6 +39,7 @@ public class LoginView extends JFrame implements ActionListener{
     
     
     public LoginView (LoginController logincontroller){
+        this.logincontroller = logincontroller;
     attributesSetter();   
     components(); 
     validation();   
@@ -149,6 +149,8 @@ public class LoginView extends JFrame implements ActionListener{
         JButton b3 = new JButton("Login");
         miniMainLeft.add(b3);
         b3.setBounds(140, 130, 100, 20);
+        b3.setActionCommand("b3");
+        b3.addActionListener(logincontroller);
 
         // ORGANISING RIGHT HAND SIDE
         JPanel miniMainRight = new JPanel();
@@ -233,7 +235,7 @@ public class LoginView extends JFrame implements ActionListener{
         upper.add(b4);
         b4.setBounds(140,220, 100, 20);
         b4.setActionCommand("b4");
-        b4.addActionListener(this);
+        b4.addActionListener(logincontroller);
         
 
 
@@ -284,19 +286,10 @@ public class LoginView extends JFrame implements ActionListener{
         return TF7.getText();
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-             if(e.getActionCommand().equals("b4")){
-      JOptionPane.showMessageDialog(this,
-"<html>User registration successful!<br>PLEASE, LOGIN</html>",
-"Confirmation",
-JOptionPane.INFORMATION_MESSAGE);
-         
-     }
+  
     
     
     
-    }
 
     
     

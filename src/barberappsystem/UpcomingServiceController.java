@@ -7,6 +7,7 @@ package barberappsystem;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,7 +17,7 @@ public class UpcomingServiceController implements ActionListener{
     UpcomingServiceView upcomingserviceview;
     
      public UpcomingServiceController(){
-        
+        this.upcomingserviceview = upcomingserviceview;
         this.upcomingserviceview = new UpcomingServiceView(this);
 
   
@@ -24,7 +25,29 @@ public class UpcomingServiceController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                if(e.getActionCommand().equals("b3")){
+      JOptionPane.showMessageDialog(upcomingserviceview,
+"You have confirmed the appointment!",
+"Confirmation",
+JOptionPane.INFORMATION_MESSAGE);
+         
+     }
+                
+                       if(e.getActionCommand().equals("b4")){
+                      upcomingserviceview.dispose();
+                      new AppointStatusController();
+           
+       } 
+                       
+                              if(e.getActionCommand().equals("b5")){
+                      upcomingserviceview.dispose();
+                      new AvailabilityServiceController();
+           
+       } 
+    
+    
+    
+    
     }
     
     

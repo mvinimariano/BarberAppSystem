@@ -18,7 +18,7 @@ public class DateTimeCustomerController implements ActionListener{
     
     
          public DateTimeCustomerController(){
-        
+        this.datetimecustomerview = datetimecustomerview;
         this.datetimecustomerview = new DateTimeCustomerView(this);
 
   
@@ -28,7 +28,15 @@ public class DateTimeCustomerController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    if(e.getActionCommand().equals("b3")){
+                      datetimecustomerview.dispose();
+                      new HomeCustumerController();
+ 
+           
+       } 
+    
+    
+    
     }
     
 }

@@ -19,20 +19,37 @@ public class AvailabilityServiceController implements ActionListener {
     
     
         public AvailabilityServiceController(){
-        
+        this.availabilityserviceview = availabilityserviceview; 
         this.availabilityserviceview = new AvailabilityServiceView(this);
 
   
 }
+       
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
-     int n = JOptionPane.showConfirmDialog(null,"Are you sure you want to close?", "Confirm", JOptionPane.YES_NO_OPTION);
-        
-    if(n == 0){
-      System.exit(0);
-            
+             if(e.getActionCommand().equals("b5")){
+        JOptionPane.showMessageDialog(availabilityserviceview,
+        "You have submited your availability!",
+        "Confirmation",
+        JOptionPane.INFORMATION_MESSAGE);
+         } 
+                       if(e.getActionCommand().equals("b3")){
+                      availabilityserviceview.dispose();
+                      new UpcomingServiceController();
+           
+       } 
+                       if(e.getActionCommand().equals("b4")){
+                      availabilityserviceview.dispose();
+                      new AppointStatusController();
+           
+       }              
+             
+             
+             
+             
+             
+             
         }
         
         
@@ -43,4 +60,4 @@ public class AvailabilityServiceController implements ActionListener {
     
     
     
-}
+

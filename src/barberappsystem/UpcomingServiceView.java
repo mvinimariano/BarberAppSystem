@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,10 +21,11 @@ import javax.swing.JPanel;
  *
  * @author mvini
  */
-public class UpcomingServiceView extends JFrame implements ActionListener{
+public class UpcomingServiceView extends JFrame {
     UpcomingServiceController upcomingservicecontroller;
     
      public UpcomingServiceView (UpcomingServiceController upcomingservicecontroller){
+    this.upcomingservicecontroller = upcomingservicecontroller; 
     attributesSetter();   
     components1(); 
     validation();
@@ -34,7 +34,7 @@ public class UpcomingServiceView extends JFrame implements ActionListener{
        private void attributesSetter(){
         this.setVisible(true);
         this.setSize(800,600);
-        this.setTitle("Home Page");
+        this.setTitle("Upcoming Appointments");
         this.setLocationRelativeTo(null);
     }
     
@@ -132,7 +132,7 @@ public class UpcomingServiceView extends JFrame implements ActionListener{
         miniMainLeft.add(b3);
         b3.setBounds(160, 80, 100, 20);
         b3.setActionCommand("b3");
-        b3.addActionListener(this);
+        b3.addActionListener(upcomingservicecontroller);
         
         JButton b7 = new JButton("CANCEL");
         miniMainLeft.add(b7);
@@ -148,6 +148,8 @@ public class UpcomingServiceView extends JFrame implements ActionListener{
  
         JButton b5 = new JButton("SET");
         miniMainLeft.add(b5);
+        b5.setActionCommand("b5");
+        b5.addActionListener(upcomingservicecontroller);
         b5.setBounds(140, 290, 100, 20);
 
         // ORGANISING RIGHT HAND SIDE
@@ -176,6 +178,8 @@ public class UpcomingServiceView extends JFrame implements ActionListener{
 
         JButton b4 = new JButton("CHECK");
         upper.add(b4);
+        b4.setActionCommand("b4");
+        b4.addActionListener(upcomingservicecontroller);
         b4.setBounds(140, 130, 100, 20);
         
 
@@ -187,17 +191,9 @@ public class UpcomingServiceView extends JFrame implements ActionListener{
         
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-               if(e.getActionCommand().equals("b3")){
-      JOptionPane.showMessageDialog(this,
-"You have confirmed the appointment!",
-"Confirmation",
-JOptionPane.INFORMATION_MESSAGE);
-         
-     }
+
         
         
-    }
+    
     
 }
