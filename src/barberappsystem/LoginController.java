@@ -54,6 +54,8 @@ public class LoginController implements ActionListener{
     String location = loginview.getLocationR();
     String phoneNum = loginview.getPhoneNumb();
 
+
+    
     
     User user = new User(name,email,password,location,phoneNum);  
         
@@ -75,30 +77,26 @@ public class LoginController implements ActionListener{
     
                 if(e.getActionCommand().equals("b4")){
                     
-        try {
-            CreatingAccount CA = new CreatingAccount(this.loginview.getFullName(),this.loginview.getEmail(),this.loginview.getLocationR(),this.loginview.getPhoneNumb(),this.loginview.getLocationR());
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            CreatingAccount CA = new CreatingAccount(this.loginview.getFullName(),this.loginview.getEmail(),this.loginview.getLocationR(),this.loginview.getPhoneNumb(),this.loginview.getLocationR());
+//        } catch (SQLException ex) {
+//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
              
             
              if(loginview.getFullName().isEmpty()||loginview.getEmail().isEmpty() || loginview.getLocationR().isEmpty() || loginview.getPhoneNumb().isEmpty() || loginview.getLocationR().isEmpty()){
-                 loginview.dispose();
-                System.out.println("OPAAAA");
+                JOptionPane.showMessageDialog(loginview,"Please, fill all the spaces");
             }
             
-            else if(loginview.UserButton()){
-            try {
-                creatingAcc.CreatingAccount1(user);
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+            else if(creatingAcc.writeUser()){
+                 System.out.println("dsahasd");
+
+               loginview.dispose();
+               new LoginController();
+                
+          
             }
-                System.out.println("1111111111111111111"); 
-            }
-//            else if(loginview.ServiceButton()){
-//                creatingAcc.CreatingAccount1(user);;
-//                System.out.println("2222222222222222222"); 
-//            }            
+          
         }
         
         

@@ -16,63 +16,47 @@ import java.sql.Statement;
  * @author mvini
  */
 public class DataBase {
+    String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
+    String dbUser = "Marcos_2019146";
+    String dpPassword = "2019146";
+    Connection conn;
+    Statement stmt;
+    ResultSet rs;
     
-    public DataBase(){
-        callingDB();
+    public ResultSet executeQuery(String query) throws SQLException{
+        // Get a connection to the database
+        conn = DriverManager.getConnection(dbServer, dbUser, dpPassword);
+        // Get a statement from the connection
+        stmt = conn.createStatement();
+        //Execute the query
+        rs = stmt.executeQuery(query);
+        
+        return rs;
+    }
+    public boolean execute(String query) throws SQLException{
+        // Get a connection to the database
+        conn = DriverManager.getConnection(dbServer, dbUser, dpPassword);
+        // Get a statement from the connection
+        stmt = conn.createStatement();
+        //Execute the query
+        boolean result = stmt.execute(query);
+        
+        return result;
     }
     
-    
-    
-      public void callingDB(){
-        
-        
-          try {
-
-            String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
-            String user = "Marcos_2019146";
-            String password = "2019146";
-            String query = "(SELECT * FROM Marcos_2019146.User)";
-
-            // Get a connection to the database
-            Connection conn = DriverManager.getConnection(dbServer, user, password);
+    public void close() throws SQLException{
+        // Close the result set, statement and the connection
             
-
-                    
-
-            // Get a statement from the connection
-            Statement stmt = conn.createStatement();
-            
-            
-
-            // Execute the query
-            ResultSet rs = stmt.executeQuery(query);
-
-            // Loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getString("idUser") + "\t" + rs.getString("full_name") + "\t" + rs.getString("email")+ "\t" + rs.getString("mobile_number")+ "\t" + rs.getString("password"));
-            }
-
-            // Close the result set, statement and the connection
-            rs.close();
+        if(stmt != null){
             stmt.close();
-            conn.close();
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-            // Loop through the SQL Exceptions
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
         }
-
-          
-        
-    }  
-    
+        if(conn != null){
+            conn.close();
+        }
+        if(rs != null){
+            rs.close();
+        }
+    }
 }
+    
+
