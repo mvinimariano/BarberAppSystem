@@ -48,6 +48,7 @@ public class HomeCustumerView2 extends JFrame {
         this.setSize(800,600);
         this.setTitle("Book an Appointment");
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
        private void validation(){

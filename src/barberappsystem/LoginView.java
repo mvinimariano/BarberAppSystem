@@ -24,7 +24,7 @@ import javax.swing.JTextField;
  *
  * @author mvini
  */
-public class LoginView extends JFrame {
+public class LoginView extends JFrame{
     private JTextField TF1; // email login
     private JTextField TF2; // password login
     private JTextField TF3; //full name register
@@ -32,14 +32,19 @@ public class LoginView extends JFrame {
     private JTextField TF5; // mobile register
     private JTextField TF6; // password register
     private JTextField TF7; // location register
+    public JRadioButton optionsMenu;
+    public JRadioButton optionsMenu2;
     
     LoginController logincontroller;
+    CreatingAccount creatingAcc;
+    
     
     
     
     
     public LoginView (LoginController logincontroller){
         this.logincontroller = logincontroller;
+        this.creatingAcc = creatingAcc;
     attributesSetter();   
     components(); 
     validation();   
@@ -133,6 +138,7 @@ public class LoginView extends JFrame {
         
         JLabel l4 = new JLabel("Email: ");
         TF1 = new JTextField(15);
+        this.TF1 = TF1;
         miniMainLeft.add(l4);
         miniMainLeft.add(TF1);
         l4.setBounds(20, 40, 100, 20);
@@ -140,6 +146,7 @@ public class LoginView extends JFrame {
         
         JLabel l5 = new JLabel("Password: ");
         TF2 = new JTextField(15);
+        this.TF2 = TF2;
         miniMainLeft.add(l5);
         miniMainLeft.add(TF2);
         l5.setBounds(20, 70, 100, 20);
@@ -177,11 +184,10 @@ public class LoginView extends JFrame {
          String[] options = { "Customer", "Barber/HairDresser"};
         
         //Create the radio buttons.
-        JRadioButton optionsMenu = new JRadioButton(options[0]);
+        optionsMenu = new JRadioButton(options[0]);
         optionsMenu.setSelected(true);
         optionsMenu.setBounds(20, 30, 100, 20);
-        optionsMenu.setActionCommand("optionsMenu");
-        JRadioButton optionsMenu2 = new JRadioButton(options[1]);
+        optionsMenu2 = new JRadioButton(options[1]);
         optionsMenu2.setBounds(160, 30, 150, 20);
   
 
@@ -191,9 +197,11 @@ public class LoginView extends JFrame {
         group.add(optionsMenu2);
         upper.add(optionsMenu);
         upper.add(optionsMenu2);
-        
-        optionsMenu2.setActionCommand("optionsMenu2");
-//        optionsMenu2.addActionListener(this);
+        optionsMenu.addActionListener(logincontroller);
+        optionsMenu.setActionCommand("customer");
+        optionsMenu2.addActionListener(logincontroller);
+        optionsMenu2.setActionCommand("barber");
+       
        
         
         JLabel lbl1 = new JLabel("Full Name: ");
@@ -252,6 +260,7 @@ public class LoginView extends JFrame {
         this.setSize(800,600);
         this.setTitle("Barber System");
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     
@@ -273,13 +282,13 @@ public class LoginView extends JFrame {
         public String getFullName(){ // get full name register
         return TF3.getText();
     }
-    public String getEmailR(){ // get email register
+    public String getEmail(){ // get email register
         return TF4.getText();
     }
-        public String getMobileNumber(){  // get mobile number
+        public String getPhoneNumb(){  // get mobile number
         return TF5.getText();
     }
-    public String getPassR(){ // get password register
+    public String getPass(){ // get password register
         return TF6.getText();
     }
         public String getLocationR(){  // get location register
@@ -287,7 +296,26 @@ public class LoginView extends JFrame {
     }
 
   
-    
+    public boolean UserButton(){
+        if (optionsMenu.isSelected()){
+            System.out.println("opa");
+            return true;
+        }
+         else{
+           return false;
+       }
+  
+    }
+     
+     public boolean ServiceButton(){
+        if (optionsMenu2.isSelected()){
+            System.out.println("eeba");
+            return true;
+        }
+         else{
+           return false;
+       } 
+     }
     
     
 

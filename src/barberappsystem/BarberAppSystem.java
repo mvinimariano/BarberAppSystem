@@ -34,16 +34,17 @@ public class BarberAppSystem extends JFrame {
     public static void main(String[] args) {
         // TODO code application logic here
 //        new BarberAppSystem();
-//        new LoginController();
-        new HomeCustumerController2();
+        new LoginController();
+//        new HomeCustumerController2();
 //                new HomeCustumerController();
 //        new DateTimeCustomerController();
 //          new MyBookingsController();
 //          new FeedbackController();
-//        new HomeServiceController();
+////        new HomeServiceController();
 //        new UpcomingServiceController();
 //        new AppointStatusController();
 //        new AvailabilityServiceController();
+//        new DataBase();
        
        
         

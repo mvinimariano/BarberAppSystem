@@ -43,6 +43,7 @@ public class HomeCustumerView extends JFrame {
         this.setSize(800,600);
         this.setTitle("Home Page");
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
        private void validation(){
