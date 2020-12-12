@@ -16,64 +16,15 @@ import java.sql.Statement;
  * @author mvini
  */
 public class Login {
-           public boolean loginPage(User user){
-        
-        
-        
-        
-        boolean result = false;
-        
-        
-        try {
-
-            String dbServer = "jdbc:mysql://apontejaj.com:3306/Aline_2019438?useSSL=false";
-            String dbUser = "Aline_2019438";
-            String dbPassword = "2019438";
-            String query = "SELECT * FROM LoginClient WHERE userEmail = '" + user.getEmail() + "' AND userPassword = '" + user.getPassword() + "';";
-            
-
-            // Get a connection to the database
-            Connection conn = DriverManager.getConnection(dbServer, dbUser, dbPassword);
-
-            // Get a statement from the connection
-            Statement stmt = conn.createStatement();
-
-            // Execute the query
-            ResultSet rs = stmt.executeQuery(query);
-            
-            // Loop through the result set
-            if (rs.next()) {
-                result = true;
-            }
-
-            // Close the result set, statement and the connection
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-            // Loop through the SQL Exceptions
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return result;
- 
+    LoginView loginview;
+    String email;
+    String password;
+    
          
+    public boolean loginPage(User user){
+
         
-    }
-       
-       public boolean loginBarber(User user){
-        
-        boolean resultHair = false;
+        boolean userPage = false;
         
         
         try {
@@ -81,7 +32,7 @@ public class Login {
             String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
             String dbUser = "Marcos_2019146";
             String dbPassword = "2019146";
-            String query = "SELECT * FROM Marcos_2019146.Service WHERE hairEmail = '" + user.getEmail() + "' AND hairPassword = '" + user.getPassword() + "';";
+            String query = "SELECT * FROM User WHERE email = '" + loginview.getValueEmail() + "' AND password = '" + loginview.getValuePassword() + "';";
             
 
             // Get a connection to the database
@@ -95,7 +46,7 @@ public class Login {
             
             // Loop through the result set
             if (rs.next()) {
-                resultHair = true;
+                userPage = true;
             }
 
             // Close the result set, statement and the connection
@@ -117,7 +68,59 @@ public class Login {
             System.out.println(e);
         }
         
-        return resultHair;
+        return userPage;
+ 
+         
+        
+    }
+       
+       public boolean loginBarber(User user){
+        
+        boolean barberPage = false;
+        
+        
+        try {
+
+            String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
+            String dbUser = "Marcos_2019146";
+            String dbPassword = "2019146";
+            String query = "SELECT * FROM Marcos_2019146.Service WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
+            
+
+            // Get a connection to the database
+            Connection conn = DriverManager.getConnection(dbServer, dbUser, dbPassword);
+
+            // Get a statement from the connection
+            Statement stmt = conn.createStatement();
+
+            // Execute the query
+            ResultSet rs = stmt.executeQuery(query);
+            
+            // Loop through the result set
+            if (rs.next()) {
+                barberPage = true;
+            }
+
+            // Close the result set, statement and the connection
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            System.out.println("SQL Exception:");
+
+            // Loop through the SQL Exceptions
+            while (se != null) {
+                System.out.println("State  : " + se.getSQLState());
+                System.out.println("Message: " + se.getMessage());
+                System.out.println("Error  : " + se.getErrorCode());
+
+                se = se.getNextException();
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        return barberPage;
  
          
         

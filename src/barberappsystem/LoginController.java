@@ -21,6 +21,8 @@ public class LoginController implements ActionListener{
     
     LoginView loginview;
     CreatingAccount creatingAcc;
+    User user;
+    Login login;
     
     
 
@@ -28,12 +30,10 @@ public class LoginController implements ActionListener{
     
     
         public LoginController(){
-        
-        
+             
         this.loginview = new LoginView (this);
-//        this.creatingAcc = creatingAcc;
-  
-}
+        this.login = new Login();
+        }
     
 
  
@@ -41,6 +41,35 @@ public class LoginController implements ActionListener{
     @Override
     @SuppressWarnings("empty-statement")
     public void actionPerformed(ActionEvent e)  {
+        
+            String userEmail = loginview.getValueEmail();
+            String userPassword = loginview.getValuePassword();
+            
+            User user = new User(userEmail,userPassword);
+            
+            boolean userPage = login.loginPage(user);
+            boolean barberPage = login.loginBarber(user);    
+        
+        
+        
+        if(e.getActionCommand().equals("b3") && userPage){
+            loginview.dispose();
+            new HomeCustumerController();        
+    
+        }
+        if(e.getActionCommand().equals("b3")&& barberPage){
+            loginview.dispose();
+            new HomeServiceController();
+   
+        }
+        
+        
+        
+        
+        
+        
+        
+        
 //              if(e.getActionCommand().equals("b4")){
 //      JOptionPane.showMessageDialog(loginview,
 //"<html>User registration successful!<br>PLEASE, LOGIN</html>",
@@ -57,7 +86,7 @@ public class LoginController implements ActionListener{
 
     
     
-    User user = new User(name,email,password,location,phoneNum);  
+    User user1 = new User(name,email,password,location,phoneNum);  
         
         
               
@@ -82,21 +111,30 @@ public class LoginController implements ActionListener{
 //        } catch (SQLException ex) {
 //            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-             
-            
+
+
              if(loginview.getFullName().isEmpty()||loginview.getEmail().isEmpty() || loginview.getLocationR().isEmpty() || loginview.getPhoneNumb().isEmpty() || loginview.getLocationR().isEmpty()){
                 JOptionPane.showMessageDialog(loginview,"Please, fill all the spaces");
-            }
-            
-            else if(creatingAcc.writeUser()){
-                 System.out.println("dsahasd");
-
-               loginview.dispose();
-               new LoginController();
-                
-          
-            }
-          
+            }else{
+                 try{
+                     creatingAcc = new CreatingAccount(name,email,password,location,phoneNum);
+                     if(creatingAcc.writeUser()){
+                         System.out.println("eaeaeaeea");
+                         loginview.dispose();
+                         new LoginController();                     
+                         
+                         
+                     }
+                 }catch(Exception ex){
+                     JOptionPane.showMessageDialog(loginview, "DB ERROR: " + ex.getMessage());
+                     
+                     
+                 }
+     //instajj
+                 
+             }
+             
+    
         }
         
         

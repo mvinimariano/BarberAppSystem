@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class CreatingAccount {
     User usercreating;
     LoginView loginview;
-    DataBase db;
+   DataBase datab;
     
 public CreatingAccount(String name, String email,String password, String location, String phoneNum) throws SQLException{
     this.usercreating = new User(name,email,password,location,phoneNum);
@@ -27,14 +27,14 @@ public CreatingAccount(String name, String email,String password, String locatio
 
  public boolean writeUser(){
         try {
-            DataBase db = new DataBase();
+            
             
             String query = "INSERT INTO Marcos_2019146.User (full_name, email, mobile_number,password, location) VALUES ('" + usercreating.getName()+ "','" +  usercreating.getEmail() + "','"+  usercreating.getPhoneNum() +"','" + usercreating.getPassword() +"','" + usercreating.getLocation() + "')";
             
             //Execute the query
-            db.execute(query);
+            datab.execute(query);
             
-            db.close();
+            datab.close();
             
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
@@ -57,12 +57,7 @@ public CreatingAccount(String name, String email,String password, String locatio
     }
     
     public boolean checkingPassword (){
-        if (!usercreating.getPassword().equals(usercreating.getPassword())){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return usercreating.getPassword().equals(usercreating.getPassword());
         
     }
     
@@ -72,13 +67,13 @@ public CreatingAccount(String name, String email,String password, String locatio
             
             String query = "SELECT COUNT(email) from Marcos_2019146.User WHERE email = '"+email+"'";
             
-            ResultSet rs = db.executeQuery(query);
+            ResultSet rs = datab.executeQuery(query);
             if(rs.next()){
                 if (rs.getInt(1)>0){
                     return true;
                 }
             }
-            db.close();
+            datab.close();
             
         } catch (SQLException se) {
             System.out.println("SQL Exception:");
