@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  * @author mvini
  */
 public class DateTimeCustomerController implements ActionListener{
-    
+    //calling the other class
     DateTimeCustomerView datetimecustomerview;
     
     
@@ -29,6 +29,7 @@ public class DateTimeCustomerController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                     if(e.getActionCommand().equals("b3")){
+                        //setting action command and dispose this frame and opens other one
                       datetimecustomerview.dispose();
                       new HomeCustumerController();
  

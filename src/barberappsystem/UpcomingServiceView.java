@@ -32,6 +32,7 @@ public class UpcomingServiceView extends JFrame {
     }
     
        private void attributesSetter(){
+           //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("Upcoming Appointments");
@@ -40,6 +41,7 @@ public class UpcomingServiceView extends JFrame {
     }
     
        private void validation(){
+           // validating and repainting setter
         this.validate();
         this.repaint();
     }
@@ -49,18 +51,19 @@ public class UpcomingServiceView extends JFrame {
         BorderLayout frameLayout = new BorderLayout();
         this.setLayout(frameLayout);
 
-                // TOP SECTION SETUP
+                // top panel
         JPanel topPanel = new JPanel();
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // spliting it in 1 row and 2 columns
         GridLayout topLayout = new GridLayout(1,2);
         topPanel.setLayout(topLayout);
         
-        // ADDING THE PANEL TO THE FRAME
+        // adding the panel to the frame
         this.add(topPanel, BorderLayout.PAGE_START);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel left = new JPanel();
         FlowLayout leftLayout = new FlowLayout();
+        //setting layout null to use bounds
         left.setLayout(null);
         
         
@@ -68,9 +71,9 @@ public class UpcomingServiceView extends JFrame {
         left.add(l1);
         l1.setBounds(25, 15, 250, 20);
         
-        // ADDING IT TO THE TOP SECTION
+        // adding it to the top panel
         topPanel.add(left);
- // ORGANISING THE RIGHT HAND SIDE
+        //right side
         JPanel right = new JPanel();
         FlowLayout rightLayout = new FlowLayout();
         right.setLayout(rightLayout);
@@ -80,22 +83,20 @@ public class UpcomingServiceView extends JFrame {
         right.add(b2);
 
         
-        // ADDING IT TO THE TOP SECTION
+        // adding it to the top panel
         topPanel.add(right);
          
          
-                // MAIN AREA SETUP
+                // main area
         JPanel mainArea = new JPanel();
         BorderLayout mainAreaLayout = new BorderLayout();
         mainArea.setLayout(mainAreaLayout);
         
-        // ADDING THIS TO THE FRAME
+        // adding this to the frame
         this.add(mainArea, BorderLayout.CENTER);
         
-        // INNER TOP SECTION SETUP
+        // mini top panel
         JPanel miniTopPanel = new JPanel();
-        // HERE WE DON'T NEED TWO SECTIONS, SO JUST THE FLOW
-        // LAYOUT WILL DO
         FlowLayout miniTopLayout = new FlowLayout();
         miniTopPanel.setLayout(miniTopLayout);
         miniTopLayout.setAlignment(FlowLayout.LEFT);
@@ -103,23 +104,22 @@ public class UpcomingServiceView extends JFrame {
        
         mainArea.add(miniTopPanel, BorderLayout.PAGE_START);
         
-        // INNER MAIN SECION SETUP
+        // mini area panel
         JPanel miniMainArea = new JPanel();
         
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // creating 1 row and 1 column
         GridLayout miniMainLayout = new GridLayout(1,1);
         miniMainArea.setLayout(miniMainLayout);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel miniMainLeft = new JPanel();
         
-        // JUST A BIT OF A TREAT TO SEE THE BORDER OF THE PANEL
+        // creating border line just for desing
         miniMainLeft.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         miniMainArea.add(miniMainLeft);
-        
+        //setting layout null to use bounds
         miniMainLeft.setLayout(null);
-      
-        // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
+
                 
         JLabel lbllog = new JLabel("UPCOMING APPOINTMENTS");
         miniMainLeft.add(lbllog);
@@ -146,26 +146,26 @@ public class UpcomingServiceView extends JFrame {
         JLabel l5 = new JLabel("Set your availability for next week");
         miniMainLeft.add(l5);
         l5.setBounds(90, 240, 300, 50);
- 
+        //button wiht action command
         JButton b5 = new JButton("SET");
         miniMainLeft.add(b5);
         b5.setActionCommand("b5");
         b5.addActionListener(upcomingservicecontroller);
         b5.setBounds(140, 290, 100, 20);
 
-        // ORGANISING RIGHT HAND SIDE
+        // right side
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
         
-        // DEVIDING MINI RIGHT SECCTION INTO TWO (TWO ROWS - ONE COLUMN)
+        //creating 1 row and 1 column
         GridLayout miniMainRightLayout = new GridLayout(1,1);
         miniMainRight.setLayout(miniMainRightLayout);
         
-       
+       //upper panel
         JPanel upper = new JPanel();
         miniMainRight.add(upper);
         upper.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+        //setting layout null to use bounds
         upper.setLayout(null);
         
         JLabel lblreg = new JLabel("APPOINTMENT STATUS");
@@ -176,15 +176,12 @@ public class UpcomingServiceView extends JFrame {
         JLabel lbl1 = new JLabel("Check your appointment status for today");
         lbl1.setBounds(80, 80, 250, 20);
         upper.add(lbl1);
-
+        //button with action command
         JButton b4 = new JButton("CHECK");
         upper.add(b4);
         b4.setActionCommand("b4");
         b4.addActionListener(upcomingservicecontroller);
         b4.setBounds(140, 130, 100, 20);
-        
-
-
         
         mainArea.add(miniMainArea, BorderLayout.CENTER);
         

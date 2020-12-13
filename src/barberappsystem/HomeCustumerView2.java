@@ -38,12 +38,8 @@ public class HomeCustumerView2 extends JFrame {
         
     }
 
-
-
-
-    
-    
        private void attributesSetter(){
+           //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("Book an Appointment");
@@ -52,6 +48,7 @@ public class HomeCustumerView2 extends JFrame {
     }
     
        private void validation(){
+           // validating and repainting setter
         this.validate();
         this.repaint();
     }
@@ -59,18 +56,18 @@ public class HomeCustumerView2 extends JFrame {
               private void viewBookings(){
 
                BorderLayout frameLayout = new BorderLayout();
-        this.setLayout(frameLayout);
+               this.setLayout(frameLayout);
 
-                // TOP SECTION SETUP
+                // top panel
         JPanel topPanel = new JPanel();
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // spliting it in 1 row and 2 column
         GridLayout topLayout = new GridLayout(1,2);
         topPanel.setLayout(topLayout);
         
-        // ADDING THE PANEL TO THE FRAME
+        // adding the panel to the frame
         this.add(topPanel, BorderLayout.PAGE_START);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel left = new JPanel();
         FlowLayout leftLayout = new FlowLayout();
         left.setLayout(null);
@@ -80,9 +77,9 @@ public class HomeCustumerView2 extends JFrame {
         left.add(l1);
         l1.setBounds(25, 15, 250, 20);
         
-        // ADDING IT TO THE TOP SECTION
+        // adding to the top section
         topPanel.add(left);
- // ORGANISING THE RIGHT HAND SIDE
+         //right side
         JPanel right = new JPanel();
         FlowLayout rightLayout = new FlowLayout();
         right.setLayout(rightLayout);
@@ -92,53 +89,45 @@ public class HomeCustumerView2 extends JFrame {
         right.add(b2);
 
         
-        // ADDING IT TO THE TOP SECTION
+        // adding it to the top section
         topPanel.add(right);
          
          
-                // MAIN AREA SETUP
+                // main area
         JPanel mainArea = new JPanel();
         BorderLayout mainAreaLayout = new BorderLayout();
         mainArea.setLayout(mainAreaLayout);
         
-        // ADDING THIS TO THE FRAME
+        // adding this to the frame
         this.add(mainArea, BorderLayout.CENTER);
         
-        // INNER TOP SECTION SETUP
+
         JPanel miniTopPanel = new JPanel();
-        // HERE WE DON'T NEED TWO SECTIONS, SO JUST THE FLOW
-        // LAYOUT WILL DO
         FlowLayout miniTopLayout = new FlowLayout();
         miniTopPanel.setLayout(miniTopLayout);
         miniTopLayout.setAlignment(FlowLayout.LEFT);
         
        
         mainArea.add(miniTopPanel, BorderLayout.PAGE_START);
-        
-        // INNER MAIN SECION SETUP
         JPanel miniMainArea = new JPanel();
         
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // creating 1 row and 1 column
         GridLayout miniMainLayout = new GridLayout(1,1);
         miniMainArea.setLayout(miniMainLayout);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel miniMainLeft = new JPanel();
         
-        // JUST A BIT OF A TREAT TO SEE THE BORDER OF THE PANEL
+        // creating border just for design
         miniMainLeft.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         miniMainArea.add(miniMainLeft);
-        
+        //setting the layout null to use the bounds
         miniMainLeft.setLayout(null);
-      
-        // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
+
                 
         JLabel lbllog = new JLabel("BOOK AN APPOINTMENT");
         miniMainLeft.add(lbllog);
         lbllog.setBounds(130, 10, 200, 10);
-
-        
-        
         JLabel l4 = new JLabel("Find your Hairdresser/Barber by name or location: ");
         TF1 = new JTextField(15);
         miniMainLeft.add(l4);
@@ -146,76 +135,69 @@ public class HomeCustumerView2 extends JFrame {
         l4.setBounds(40, 40, 300, 20);
         TF1.setBounds(90, 80, 200, 20);
         
-    
-        
+        //creating button with action command
         JButton b3 = new JButton("SEARCH");
         miniMainLeft.add(b3);
         b3.setActionCommand("b3");
         b3.addActionListener(homecustumerController2);
         b3.setBounds(140, 130, 100, 20);
 
-        // ORGANISING RIGHT HAND SIDE
+        // right side
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
         
-        // DEVIDING MINI RIGHT SECCTION INTO TWO (TWO ROWS - ONE COLUMN)
+        //creating 1 row and 1 column
         GridLayout miniMainRightLayout = new GridLayout(1,1);
         miniMainRight.setLayout(miniMainRightLayout);
         
-       
+       // upper panel
         JPanel upper = new JPanel();
         miniMainRight.add(upper);
         upper.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+        // setting layout null to use the bounds
         upper.setLayout(null);
         
         JLabel lblreg = new JLabel("HAIRDRESSERS AND BARBERS: ");
         lblreg.setBounds(130, 10, 200, 10);
         upper.add(lblreg);
-        
-        JLabel l5 = new JLabel("Barber 01");
-        JLabel l6 = new JLabel("Location : blabalbalbal");
+        // barber's labels, should be database barbers
+        JLabel l5 = new JLabel("Barber: Duke Barber");
+        JLabel l6 = new JLabel("Location :01 Duke st");
         upper.add(l5);
         upper.add(l6);
         l5.setBounds(40, 45, 250, 20);
         l6.setBounds(40, 60, 250, 20);
         
-        JLabel l7 = new JLabel("Barber 02");
-        JLabel l8 = new JLabel("Location : blabalbalbal");
+        JLabel l7 = new JLabel("Barber: Old Town Barber");
+        JLabel l8 = new JLabel("Location : 5 Old Dublin Rd");
         upper.add(l7);
         upper.add(l8);
         l7.setBounds(40, 85, 250, 20);
         l8.setBounds(40, 100, 250, 20);
         
-        JLabel l9 = new JLabel("Barber 03");
-        JLabel l10 = new JLabel("Location : blabalbalbal");
+        JLabel l9 = new JLabel("Barber: The Church Barber");
+        JLabel l10 = new JLabel("Location : 9 Church St");
         upper.add(l9);
         upper.add(l10);
         l9.setBounds(40, 125, 250, 20);
         l10.setBounds(40, 140, 250, 20);
         
-        JLabel l11 = new JLabel("Barber 04");
-        JLabel l12 = new JLabel("Location : blabalbalbal");
+        JLabel l11 = new JLabel("Barber: Bruce Barbers");
+        JLabel l12 = new JLabel("Location : 4 Spruce Ave");
         upper.add(l11);
         upper.add(l12);
         l11.setBounds(40, 165, 250, 20);
         l12.setBounds(40, 180, 250, 20);
         
-
+        // creating button with action command
         JButton b4 = new JButton("BOOK");
         upper.add(b4);
         b4.setActionCommand("b4");
         b4.addActionListener(homecustumerController2);        
         b4.setBounds(140, 230, 100, 20);
-        
 
-
-        
         mainArea.add(miniMainArea, BorderLayout.CENTER);
-           
-           
-           
-           
+
            
     }
     

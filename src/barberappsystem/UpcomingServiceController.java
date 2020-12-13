@@ -26,6 +26,7 @@ public class UpcomingServiceController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                 if(e.getActionCommand().equals("b3")){
+                    //option pane to confirm the appointment
       JOptionPane.showMessageDialog(upcomingserviceview,
 "You have confirmed the appointment!",
 "Confirmation",
@@ -34,12 +35,14 @@ JOptionPane.INFORMATION_MESSAGE);
      }
                 
                        if(e.getActionCommand().equals("b4")){
+                           //dispose this view and opens a new one
                       upcomingserviceview.dispose();
                       new AppointStatusController();
            
        } 
                        
                               if(e.getActionCommand().equals("b5")){
+                                  //dispose this view and opens a new one
                       upcomingserviceview.dispose();
                       new AvailabilityServiceController();
            

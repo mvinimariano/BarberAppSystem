@@ -16,19 +16,18 @@ import java.sql.Statement;
  * @author mvini
  */
 public class CreatingAccount {
+    //calling the other classes
     User usercreating;
     LoginView loginview;
    DataBase datab;
-    
-public CreatingAccount(String name, String email,String password, String location, String phoneNum) throws SQLException{
-    this.usercreating = new User(name,email,password,location,phoneNum);
-          
-}
-
- public boolean writeUser(){
+        //method to create an account
+    public CreatingAccount(String name, String email,String password, String location, String phoneNum) throws SQLException{
+        this.usercreating = new User(name,email,password,location,phoneNum);
+        datab = new DataBase();
+    }
+       //method to send the information to the database
+ public boolean CreateUser(){
         try {
-            
-            
             String query = "INSERT INTO Marcos_2019146.User (full_name, email, mobile_number,password, location) VALUES ('" + usercreating.getName()+ "','" +  usercreating.getEmail() + "','"+  usercreating.getPhoneNum() +"','" + usercreating.getPassword() +"','" + usercreating.getLocation() + "')";
             
             //Execute the query
@@ -55,48 +54,8 @@ public CreatingAccount(String name, String email,String password, String locatio
         }
         return true;
     }
-    
-    public boolean checkingPassword (){
-        return usercreating.getPassword().equals(usercreating.getPassword());
-        
-    }
-    
-    boolean checkingEmail(String email) {
-        try {
-            
-            
-            String query = "SELECT COUNT(email) from Marcos_2019146.User WHERE email = '"+email+"'";
-            
-            ResultSet rs = datab.executeQuery(query);
-            if(rs.next()){
-                if (rs.getInt(1)>0){
-                    return true;
-                }
-            }
-            datab.close();
-            
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-            
-            // Loop through the SQL Exceptions
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-                
-                se = se.getNextException();
-            }
-            return false;
-            
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-        return false;
-        
-    }
-    
-    
+
+
     
 }
 

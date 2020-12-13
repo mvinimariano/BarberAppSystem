@@ -27,6 +27,7 @@ public class HomeServiceController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                     if(e.getActionCommand().equals("b10")){
+                        //dispose this frame and opens a new one
                       homeservice.dispose();
                       new HomeCustumerController();
            

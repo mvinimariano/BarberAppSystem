@@ -15,6 +15,8 @@ import java.sql.Statement;
  *
  * @author mvini
  */
+
+// creating the connection to the database
 public class DataBase {
     String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
     String dbUser = "Marcos_2019146";
@@ -24,9 +26,9 @@ public class DataBase {
     ResultSet rs;
     
     public ResultSet executeQuery(String query) throws SQLException{
-        // Get a connection to the database
+        // connection to the database
         conn = DriverManager.getConnection(dbServer, dbUser, dpPassword);
-        // Get a statement from the connection
+        // statement from the connection
         stmt = conn.createStatement();
         //Execute the query
         rs = stmt.executeQuery(query);

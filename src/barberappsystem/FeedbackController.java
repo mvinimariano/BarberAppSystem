@@ -29,6 +29,7 @@ public class FeedbackController implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+                    // when the user clicks in the button it dispose this frame and open a new one
                      if(e.getActionCommand().equals("b3")){
                       feedbackview.dispose();
                       new HomeCustumerController();

@@ -35,6 +35,7 @@ public class HomeServiceView extends JFrame implements ActionListener{
     
     
     private void attributesSetter(){
+        //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("Home Page");
@@ -43,6 +44,7 @@ public class HomeServiceView extends JFrame implements ActionListener{
     }
     
        private void validation(){
+           // validating and repainting setter
         this.validate();
         this.repaint();
     }
@@ -52,16 +54,16 @@ public class HomeServiceView extends JFrame implements ActionListener{
         BorderLayout frameLayout = new BorderLayout();
         this.setLayout(frameLayout);
 
-                // TOP SECTION SETUP
+                // top section
         JPanel topPanel = new JPanel();
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // spliting in 1 row and 2 columns
         GridLayout topLayout = new GridLayout(1,2);
         topPanel.setLayout(topLayout);
         
-        // ADDING THE PANEL TO THE FRAME
+        // adding panel to the frame
         this.add(topPanel, BorderLayout.PAGE_START);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel left = new JPanel();
         FlowLayout leftLayout = new FlowLayout();
         left.setLayout(null);
@@ -71,9 +73,9 @@ public class HomeServiceView extends JFrame implements ActionListener{
         left.add(l1);
         l1.setBounds(25, 15, 250, 20);
         
-        // ADDING IT TO THE TOP SECTION
+        // adding the top section
         topPanel.add(left);
- // ORGANISING THE RIGHT HAND SIDE
+        // right side
         JPanel right = new JPanel();
         FlowLayout rightLayout = new FlowLayout();
         right.setLayout(rightLayout);
@@ -83,47 +85,40 @@ public class HomeServiceView extends JFrame implements ActionListener{
         right.add(b2);
 
         
-        // ADDING IT TO THE TOP SECTION
+        //adding it to the top section
         topPanel.add(right);
          
          
-                // MAIN AREA SETUP
+                // main area
         JPanel mainArea = new JPanel();
         BorderLayout mainAreaLayout = new BorderLayout();
         mainArea.setLayout(mainAreaLayout);
         
-        // ADDING THIS TO THE FRAME
+        // adding this to the frame
         this.add(mainArea, BorderLayout.CENTER);
-        
-        // INNER TOP SECTION SETUP
-        JPanel miniTopPanel = new JPanel();
-        // HERE WE DON'T NEED TWO SECTIONS, SO JUST THE FLOW
-        // LAYOUT WILL DO
+         JPanel miniTopPanel = new JPanel();
         FlowLayout miniTopLayout = new FlowLayout();
         miniTopPanel.setLayout(miniTopLayout);
         miniTopLayout.setAlignment(FlowLayout.LEFT);
         
-       
+
         mainArea.add(miniTopPanel, BorderLayout.PAGE_START);
-        
-        // INNER MAIN SECION SETUP
+
         JPanel miniMainArea = new JPanel();
         
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        //creating 1 row and 1 column
         GridLayout miniMainLayout = new GridLayout(1,1);
         miniMainArea.setLayout(miniMainLayout);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel miniMainLeft = new JPanel();
         
-        // JUST A BIT OF A TREAT TO SEE THE BORDER OF THE PANEL
+        // creating border line just for desing
         miniMainLeft.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         miniMainArea.add(miniMainLeft);
-        
+        //setting the layout null to use the bounds
         miniMainLeft.setLayout(null);
-      
-        // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
-                
+
         JLabel lbllog = new JLabel("UPCOMING APPOINTMENTS");
         miniMainLeft.add(lbllog);
         lbllog.setBounds(110, 10, 200, 10);
@@ -131,7 +126,7 @@ public class HomeServiceView extends JFrame implements ActionListener{
         JLabel l4 = new JLabel("<html>Check your upcoming appointments and let your customer know.</html>");
         miniMainLeft.add(l4);
         l4.setBounds(40, 40, 300, 50);
- 
+        //check button with action command
         JButton b10 = new JButton("CHECK");
         miniMainLeft.add(b10);
         b10.setActionCommand("b10");
@@ -146,46 +141,41 @@ public class HomeServiceView extends JFrame implements ActionListener{
         JLabel l5 = new JLabel("Set your availability for next week");
         miniMainLeft.add(l5);
         l5.setBounds(90, 240, 300, 50);
- 
+        //set button with action command
         JButton b5 = new JButton("SET");
         miniMainLeft.add(b5);
         b5.setActionCommand("b5");
         b5.addActionListener(this);
         b5.setBounds(140, 290, 100, 20);
 
-        // ORGANISING RIGHT HAND SIDE
+        // right side
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
         
-        // DEVIDING MINI RIGHT SECCTION INTO TWO (TWO ROWS - ONE COLUMN)
+        // creating 1 row and 1 column
         GridLayout miniMainRightLayout = new GridLayout(1,1);
         miniMainRight.setLayout(miniMainRightLayout);
         
-       
+       //upper panel
         JPanel upper = new JPanel();
         miniMainRight.add(upper);
         upper.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+        //setting layout null to use bounds
         upper.setLayout(null);
         
         JLabel lblreg = new JLabel("APPOINTMENT STATUS");
         lblreg.setBounds(130, 10, 200, 10);
         upper.add(lblreg);
-        
-        
+
         JLabel lbl1 = new JLabel("Check your appointment status for today");
         lbl1.setBounds(80, 80, 250, 20);
         upper.add(lbl1);
-
+        //check button with action command
         JButton b4 = new JButton("CHECK");
         upper.add(b4);
         b4.setBounds(140, 130, 100, 20);
         b4.setActionCommand("b4");
         b4.addActionListener(this);
-        
-
-
-        
         mainArea.add(miniMainArea, BorderLayout.CENTER);
         
         
@@ -195,16 +185,19 @@ public class HomeServiceView extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                       if(e.getActionCommand().equals("b10")){
+                          //dispose this frame and opens a new one
                       this.dispose();
                       new UpcomingServiceController();
            
        } 
                           if(e.getActionCommand().equals("b5")){
+                              //dispose this frame and opens a new one
                       this.dispose();
                       new AvailabilityServiceController();
            
        }
                           if(e.getActionCommand().equals("b4")){
+                              //dispose this frame and opens a new one
                       this.dispose();
                       new AppointStatusController();
            

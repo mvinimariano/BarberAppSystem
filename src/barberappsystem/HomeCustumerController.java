@@ -14,12 +14,10 @@ import javax.swing.JOptionPane;
  * @author mvini
  */
 public class HomeCustumerController implements ActionListener {
-    
-    HomeCustumerView homecustomerView;
+   HomeCustumerView homecustomerView;
     
     
      public HomeCustumerController(){
-         
         this.homecustomerView = homecustomerView;
         this.homecustomerView = new HomeCustumerView(this);
 
@@ -32,11 +30,13 @@ public class HomeCustumerController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        if(e.getActionCommand().equals("b10")){
+           //disposing this frame and opens a new one
                       homecustomerView.dispose();
             new HomeCustumerController2();
            
        } 
              if(e.getActionCommand().equals("b4")){
+                 //disposing this frame and opens a new one
                       homecustomerView.dispose();
             new MyBookingsController();
            

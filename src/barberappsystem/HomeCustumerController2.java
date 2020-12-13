@@ -24,24 +24,17 @@ public class HomeCustumerController2 implements ActionListener {
   
 }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("b3")){
+            //disposing this frame and opens a new one
                       homecustomerView2.dispose();
             new HomeCustumerController();
            
        } 
              if(e.getActionCommand().equals("b4")){
+                 //disposing this frame and opens a new one
                       homecustomerView2.dispose();
             new DateTimeCustomerController();
            

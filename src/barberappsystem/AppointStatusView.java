@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * @author mvini
  */
 public class AppointStatusView extends JFrame {
-    //setting the controlle class in this class
+    //setting the controller class in this class
     AppointStatusController appointstatuscontroller;
     
     
@@ -32,7 +32,7 @@ public class AppointStatusView extends JFrame {
     }
     
         private void attributesSetter(){
-            //setting the frame to make it visible, size, title, position and to stop the program when you close the window
+       //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("Appointment Status");
@@ -70,7 +70,7 @@ public class AppointStatusView extends JFrame {
         left.add(l1);
         l1.setBounds(25, 15, 250, 20);
         
-        // addinf it to the top section
+        // adding it to the top section
         topPanel.add(left);
         // panel to the right side
         JPanel right = new JPanel();

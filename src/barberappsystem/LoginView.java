@@ -58,18 +58,19 @@ public class LoginView extends JFrame{
                 BorderLayout frameLayout = new BorderLayout();
         this.setLayout(frameLayout);
 
-                // TOP SECTION SETUP
+                // top panel
         JPanel topPanel = new JPanel();
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // spliting it in 1 row and 2 columns
         GridLayout topLayout = new GridLayout(1,2);
         topPanel.setLayout(topLayout);
         
-        // ADDING THE PANEL TO THE FRAME
+        // adding this to the frame
         this.add(topPanel, BorderLayout.PAGE_START);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel left = new JPanel();
         FlowLayout leftLayout = new FlowLayout();
+        //setting layout null to use the bounds
         left.setLayout(null);
         
         
@@ -77,9 +78,9 @@ public class LoginView extends JFrame{
         left.add(l1);
         l1.setBounds(25, 15, 200, 20);
         
-        // ADDING IT TO THE TOP SECTION
+        // adding it to the panel
         topPanel.add(left);
- // ORGANISING THE RIGHT HAND SIDE
+        // right side
         JPanel right = new JPanel();
         FlowLayout rightLayout = new FlowLayout();
         right.setLayout(rightLayout);
@@ -88,54 +89,46 @@ public class LoginView extends JFrame{
         JButton b2 = new JButton("LOGOUT");
         right.add(b2);
 
-        
-        // ADDING IT TO THE TOP SECTION
+        // adding it to the top section
         topPanel.add(right);
          
          
-                // MAIN AREA SETUP
+         // main area panel
         JPanel mainArea = new JPanel();
         BorderLayout mainAreaLayout = new BorderLayout();
         mainArea.setLayout(mainAreaLayout);
         
-        // ADDING THIS TO THE FRAME
+        // adding this to the frame
         this.add(mainArea, BorderLayout.CENTER);
-        
-        // INNER TOP SECTION SETUP
         JPanel miniTopPanel = new JPanel();
-        // HERE WE DON'T NEED TWO SECTIONS, SO JUST THE FLOW
-        // LAYOUT WILL DO
+
         FlowLayout miniTopLayout = new FlowLayout();
         miniTopPanel.setLayout(miniTopLayout);
         miniTopLayout.setAlignment(FlowLayout.LEFT);
-        
-       
+
+
         mainArea.add(miniTopPanel, BorderLayout.PAGE_START);
         
-        // INNER MAIN SECION SETUP
+        // mini area panel
         JPanel miniMainArea = new JPanel();
         
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // creating 1 row and 1 column
         GridLayout miniMainLayout = new GridLayout(1,1);
         miniMainArea.setLayout(miniMainLayout);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel miniMainLeft = new JPanel();
         
-        // JUST A BIT OF A TREAT TO SEE THE BORDER OF THE PANEL
+        // creating border line just for design
         miniMainLeft.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         miniMainArea.add(miniMainLeft);
-        
+        //setting layout null to use bounds
         miniMainLeft.setLayout(null);
-      
-        // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
-                
+
         JLabel lbllog = new JLabel("LOGIN");
         miniMainLeft.add(lbllog);
         lbllog.setBounds(160, 10, 100, 10);
 
-        
-        
         JLabel l4 = new JLabel("Email: ");
         TF1 = new JTextField(15);
         this.TF1 = TF1;
@@ -159,19 +152,19 @@ public class LoginView extends JFrame{
         b3.setActionCommand("b3");
         b3.addActionListener(logincontroller);
 
-        // ORGANISING RIGHT HAND SIDE
+        // right side
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
         
-        // DEVIDING MINI RIGHT SECCTION INTO TWO (TWO ROWS - ONE COLUMN)
+        // creating 1 row and 1 column
         GridLayout miniMainRightLayout = new GridLayout(1,1);
         miniMainRight.setLayout(miniMainRightLayout);
         
-       
+       // upper panel
         JPanel upper = new JPanel();
         miniMainRight.add(upper);
         upper.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+        //setting layout null to use bounds
         upper.setLayout(null);
         
         JLabel lblreg = new JLabel("REGISTER");
@@ -180,7 +173,7 @@ public class LoginView extends JFrame{
         
 
         
-        
+        //creating radio button
          String[] options = { "Customer", "Barber/HairDresser"};
         
         //Create the radio buttons.
@@ -203,7 +196,7 @@ public class LoginView extends JFrame{
         optionsMenu2.setActionCommand("barber");
        
        
-        
+        //creating labels and text fields
         JLabel lbl1 = new JLabel("Full Name: ");
         TF3 = new JTextField(15);
         lbl1.setBounds(20, 60, 100, 20);
@@ -244,10 +237,7 @@ public class LoginView extends JFrame{
         b4.setBounds(140,220, 100, 20);
         b4.setActionCommand("b4");
         b4.addActionListener(logincontroller);
-        
 
-
-        
         mainArea.add(miniMainArea, BorderLayout.CENTER);
         
         
@@ -256,6 +246,7 @@ public class LoginView extends JFrame{
     
     
         private void attributesSetter(){
+        //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("Barber System");
@@ -265,8 +256,9 @@ public class LoginView extends JFrame{
     
     
     
-        // Validation and repainting
+
     private void validation(){
+        // validating and repainting setter
         this.validate();
         this.repaint();
     }
@@ -295,32 +287,30 @@ public class LoginView extends JFrame{
         return TF7.getText();
     }
 
-  
+
     public boolean UserButton(){
         if (optionsMenu.isSelected()){
-            System.out.println("opa");
             return true;
         }
          else{
            return false;
        }
-  
+
     }
-     
+
      public boolean ServiceButton(){
         if (optionsMenu2.isSelected()){
-            System.out.println("eeba");
             return true;
         }
          else{
            return false;
-       } 
+       }
      }
-    
-    
 
-    
-    
-    
-    
+
+
+
+
+
+
 }

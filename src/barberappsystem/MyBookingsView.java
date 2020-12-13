@@ -35,8 +35,8 @@ public class MyBookingsView extends JFrame  {
     validation();   
     }
     
-    
-            private void attributesSetter(){
+        private void attributesSetter(){
+        //setting the frame to make it visible, size, title, position and to stop the program when you close the window
         this.setVisible(true);
         this.setSize(800,600);
         this.setTitle("My Bookings");
@@ -45,6 +45,7 @@ public class MyBookingsView extends JFrame  {
     }
     
         private void validation(){
+         // validating and repainting setter
         this.validate();
         this.repaint();
     }
@@ -54,16 +55,16 @@ public class MyBookingsView extends JFrame  {
         BorderLayout frameLayout = new BorderLayout();
         this.setLayout(frameLayout);
 
-                // TOP SECTION SETUP
+                // top panel
         JPanel topPanel = new JPanel();
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // creating 1 row and 2 columns
         GridLayout topLayout = new GridLayout(1,2);
         topPanel.setLayout(topLayout);
         
-        // ADDING THE PANEL TO THE FRAME
+        // adding this to the panel
         this.add(topPanel, BorderLayout.PAGE_START);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel left = new JPanel();
         FlowLayout leftLayout = new FlowLayout();
         left.setLayout(null);
@@ -73,9 +74,9 @@ public class MyBookingsView extends JFrame  {
         left.add(l1);
         l1.setBounds(25, 15, 250, 20);
         
-        // ADDING IT TO THE TOP SECTION
+        // adding to the top panel
         topPanel.add(left);
- // ORGANISING THE RIGHT HAND SIDE
+          // right side
         JPanel right = new JPanel();
         FlowLayout rightLayout = new FlowLayout();
         right.setLayout(rightLayout);
@@ -85,22 +86,20 @@ public class MyBookingsView extends JFrame  {
         right.add(b2);
 
         
-        // ADDING IT TO THE TOP SECTION
+        // adding to the top panel
         topPanel.add(right);
          
          
-                // MAIN AREA SETUP
+                // main area panel
         JPanel mainArea = new JPanel();
         BorderLayout mainAreaLayout = new BorderLayout();
         mainArea.setLayout(mainAreaLayout);
         
-        // ADDING THIS TO THE FRAME
+        // adding this to the frame
         this.add(mainArea, BorderLayout.CENTER);
         
-        // INNER TOP SECTION SETUP
+        // mini top panel
         JPanel miniTopPanel = new JPanel();
-        // HERE WE DON'T NEED TWO SECTIONS, SO JUST THE FLOW
-        // LAYOUT WILL DO
         FlowLayout miniTopLayout = new FlowLayout();
         miniTopPanel.setLayout(miniTopLayout);
         miniTopLayout.setAlignment(FlowLayout.LEFT);
@@ -108,24 +107,22 @@ public class MyBookingsView extends JFrame  {
        
         mainArea.add(miniTopPanel, BorderLayout.PAGE_START);
         
-        // INNER MAIN SECION SETUP
+        // mini area panel
         JPanel miniMainArea = new JPanel();
         
-        // DEVIDING TOP SECTION INTO TWO (ONE ROW - TWO COLUMNS)
+        // creating 1 row and 1 column
         GridLayout miniMainLayout = new GridLayout(1,1);
         miniMainArea.setLayout(miniMainLayout);
         
-        // ORGANISING LEFT HAND SIDE
+        // left side
         JPanel miniMainLeft = new JPanel();
         
-        // JUST A BIT OF A TREAT TO SEE THE BORDER OF THE PANEL
+        // creating a border line just for design
         miniMainLeft.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         miniMainArea.add(miniMainLeft);
-        
-        miniMainLeft.setLayout(null);
-      
-        // WE CAN ADD A FLOW LAYOUT MANAGER HERE TO PUT IT IN THE MIDDLE
-                
+        //setting layout null to use bounds
+
+        // creating label
         JLabel lbllog = new JLabel("BOOK AN APPOINTMENT");
         miniMainLeft.add(lbllog);
         lbllog.setBounds(130, 10, 200, 10);
@@ -141,42 +138,42 @@ public class MyBookingsView extends JFrame  {
         
 
         
-        
+        //creating search button
         JButton b3 = new JButton("Search");
         miniMainLeft.add(b3);
         b3.setActionCommand("b3");
         b3.addActionListener(mybookingscontroller);
         b3.setBounds(140, 130, 100, 20);
 
-        // ORGANISING RIGHT HAND SIDE
+        // right side
         JPanel miniMainRight = new JPanel();
         miniMainArea.add(miniMainRight);
         
-        // DEVIDING MINI RIGHT SECCTION INTO TWO (TWO ROWS - ONE COLUMN)
+        // creating 1 row and 1 column
         GridLayout miniMainRightLayout = new GridLayout(1,1);
         miniMainRight.setLayout(miniMainRightLayout);
         
-       
+       //upper panel
         JPanel upper = new JPanel();
         miniMainRight.add(upper);
         upper.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+        // setting layout null to use bounds
         upper.setLayout(null);
-        
+
+        //creating some labels
         JLabel lblreg = new JLabel("VIEW YOUR BOOKINGS");
         lblreg.setBounds(130, 10, 200, 10);
         upper.add(lblreg);
-        
-        
+
         JLabel lbl1 = new JLabel("UPCOMING BOOKINGS:  ");
         lbl1.setBounds(60, 60, 200, 20);
         upper.add(lbl1);
         
-        JLabel lbl2 = new JLabel("Barber 03:");
+        JLabel lbl2 = new JLabel("Barber: Irish Barbers");
         lbl2.setBounds(60, 90, 200, 20);
         upper.add(lbl2);
         
-        JLabel lbl3 = new JLabel("Location: blablabalaba");
+        JLabel lbl3 = new JLabel("Location: 3 Irishtown Rd");
         lbl3.setBounds(60, 105, 200, 20);
         upper.add(lbl3);
         
@@ -187,7 +184,7 @@ public class MyBookingsView extends JFrame  {
         JLabel lbl5 = new JLabel("Time: 04:00PM");
         lbl5.setBounds(60, 135, 200, 20);
         upper.add(lbl5);
-
+        // cancel button with action command
         JButton b4 = new JButton("CANCEL");
         upper.add(b4);
         b4.setBounds(140, 170, 100, 20);
@@ -195,7 +192,7 @@ public class MyBookingsView extends JFrame  {
         b4.addActionListener(mybookingscontroller);
         
         
-        
+        //pasting bookings label
         JLabel lbl6 = new JLabel("PASTING BOOKINGS:  ");
         lbl6.setBounds(60, 210, 200, 20);
         upper.add(lbl6);
@@ -204,33 +201,28 @@ public class MyBookingsView extends JFrame  {
         lbl7.setBounds(60, 240, 200, 20);
         upper.add(lbl7);
         
-        JLabel lbl8 = new JLabel("Barber 03:");
+        JLabel lbl8 = new JLabel("Barber: Bruce Barbers");
         lbl8.setBounds(60, 260, 200, 20);
         upper.add(lbl8);
         
-        JLabel lbl9 = new JLabel("Location: blablabalaba");
+        JLabel lbl9 = new JLabel("Location: 2 Spruce St");
         lbl9.setBounds(60, 275, 200, 20);
         upper.add(lbl9);
         
-        JLabel lbl11 = new JLabel("Date: 10/05/21");
+        JLabel lbl11 = new JLabel("Date: 10/02/20");
         lbl11.setBounds(60, 290, 200, 20);
         upper.add(lbl11);
         
-        JLabel lbl12 = new JLabel("Time: 04:00PM");
+        JLabel lbl12 = new JLabel("Time: 01:00PM");
         lbl12.setBounds(60, 305, 200, 20);
         upper.add(lbl12);
-
+        //review button with action command
         JButton b5 = new JButton("REVIEW");
         upper.add(b5);
         b5.setActionCommand("b5");
         b5.addActionListener(mybookingscontroller);
         b5.setBounds(140, 340, 100, 20);
-        
-    
-        
 
-
-        
         mainArea.add(miniMainArea, BorderLayout.CENTER);
         
         

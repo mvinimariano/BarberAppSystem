@@ -19,13 +19,19 @@ public class Login {
     LoginView loginview;
     String email;
     String password;
-    
-         
+    //login method
+    public Login(){
+        this.email = email;
+        this.password = password;
+
+
+    }
+    //login with user parameter
     public boolean loginPage(User user){
 
-        
+
         boolean userPage = false;
-        
+
         
         try {
 
@@ -73,57 +79,6 @@ public class Login {
          
         
     }
-       
-       public boolean loginBarber(User user){
-        
-        boolean barberPage = false;
-        
-        
-        try {
 
-            String dbServer = "jdbc:mysql://apontejaj.com:3306/Marcos_2019146?useSSL=false";
-            String dbUser = "Marcos_2019146";
-            String dbPassword = "2019146";
-            String query = "SELECT * FROM Marcos_2019146.Service WHERE email = '" + user.getEmail() + "' AND password = '" + user.getPassword() + "';";
-            
 
-            // Get a connection to the database
-            Connection conn = DriverManager.getConnection(dbServer, dbUser, dbPassword);
-
-            // Get a statement from the connection
-            Statement stmt = conn.createStatement();
-
-            // Execute the query
-            ResultSet rs = stmt.executeQuery(query);
-            
-            // Loop through the result set
-            if (rs.next()) {
-                barberPage = true;
-            }
-
-            // Close the result set, statement and the connection
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException se) {
-            System.out.println("SQL Exception:");
-
-            // Loop through the SQL Exceptions
-            while (se != null) {
-                System.out.println("State  : " + se.getSQLState());
-                System.out.println("Message: " + se.getMessage());
-                System.out.println("Error  : " + se.getErrorCode());
-
-                se = se.getNextException();
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return barberPage;
- 
-         
-        
-    }
-    
 }

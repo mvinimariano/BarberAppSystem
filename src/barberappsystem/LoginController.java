@@ -17,22 +17,14 @@ import javax.swing.JOptionPane;
  * @author mvini
  */
 public class LoginController implements ActionListener{
-    
-    
     LoginView loginview;
     CreatingAccount creatingAcc;
     User user;
     Login login;
-    
-    
 
-    
-    
-    
         public LoginController(){
-             
-        this.loginview = new LoginView (this);
-        this.login = new Login();
+            this.loginview = new LoginView (this);
+            this.login = new Login();
         }
     
 
@@ -41,85 +33,48 @@ public class LoginController implements ActionListener{
     @Override
     @SuppressWarnings("empty-statement")
     public void actionPerformed(ActionEvent e)  {
-        
+            //creating 2 strings to get the input from the user
             String userEmail = loginview.getValueEmail();
             String userPassword = loginview.getValuePassword();
-            
+            //putting the user input in the User
             User user = new User(userEmail,userPassword);
             
             boolean userPage = login.loginPage(user);
-            boolean barberPage = login.loginBarber(user);    
-        
-        
-        
-        if(e.getActionCommand().equals("b3") && userPage){
+
+        if(e.getActionCommand().equals("b3")){
+            //dispose this view and opens a new one
             loginview.dispose();
             new HomeCustumerController();        
     
         }
-        if(e.getActionCommand().equals("b3")&& barberPage){
-            loginview.dispose();
-            new HomeServiceController();
-   
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-//              if(e.getActionCommand().equals("b4")){
-//      JOptionPane.showMessageDialog(loginview,
-//"<html>User registration successful!<br>PLEASE, LOGIN</html>",
-//"Confirmation",
-//JOptionPane.INFORMATION_MESSAGE);
-//     }
-              
-    String name = loginview.getName();
-    String email = loginview.getEmail();    
+
+    //creating the variables to get the user input
+    String name = loginview.getFullName();
     String password = loginview.getPass();
+    String email = loginview.getEmail();
     String location = loginview.getLocationR();
     String phoneNum = loginview.getPhoneNumb();
 
 
     
-    
+    //putitng the variables into the user
     User user1 = new User(name,email,password,location,phoneNum);  
         
-        
-              
-              
-              
-//       if(e.getActionCommand().equals("b3")){
-//                      loginview.dispose();
-//            new HomeCustumerController();
-////                      new HomeServiceController();
-//           
-//       } 
-       
-//              if(e.getActionCommand().equals("Login")){
-//                creatingAcc.CreatingAccount1(user);
-//                  System.out.println("FOIIIII");
-//       } 
-    
+
                 if(e.getActionCommand().equals("b4")){
-                    
-//        try {
-//            CreatingAccount CA = new CreatingAccount(this.loginview.getFullName(),this.loginview.getEmail(),this.loginview.getLocationR(),this.loginview.getPhoneNumb(),this.loginview.getLocationR());
-//        } catch (SQLException ex) {
-//            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-
-             if(loginview.getFullName().isEmpty()||loginview.getEmail().isEmpty() || loginview.getLocationR().isEmpty() || loginview.getPhoneNumb().isEmpty() || loginview.getLocationR().isEmpty()){
+                    //checking if the text fields are empty or not
+                    if(loginview.getFullName().isEmpty()||loginview.getEmail().isEmpty() || loginview.getLocationR().isEmpty() || loginview.getPhoneNumb().isEmpty() || loginview.getLocationR().isEmpty()){
                 JOptionPane.showMessageDialog(loginview,"Please, fill all the spaces");
             }else{
                  try{
+                     //creating the user
                      creatingAcc = new CreatingAccount(name,email,password,location,phoneNum);
-                     if(creatingAcc.writeUser()){
-                         System.out.println("eaeaeaeea");
+                     if(creatingAcc.CreateUser()){
+                         JOptionPane.showMessageDialog(loginview,
+                "<html>User registration successful!<br>PLEASE, LOGIN</html>",
+                    "Confirmation",
+                    JOptionPane.INFORMATION_MESSAGE);
+
                          loginview.dispose();
                          new LoginController();                     
                          
@@ -130,8 +85,7 @@ public class LoginController implements ActionListener{
                      
                      
                  }
-     //instajj
-                 
+
              }
              
     

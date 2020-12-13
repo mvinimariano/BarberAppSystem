@@ -10,6 +10,7 @@ package barberappsystem;
  * @author mvini
  */
 public class User {
+    //user variables
     private String name = "";
     private String email= "";
     private String password= "";
@@ -18,12 +19,14 @@ public class User {
     
     
     public User(String email, String pasword){
+        //user method to login page
         this.email = email;
         this.password = password;
     
     }
     
     public User(String name,String email,String password,String location, String phoneNum){
+        //creating user
       this.name = name;
       this.email = email;
       this.password = password;
@@ -32,22 +35,22 @@ public class User {
         
     }
     
-    public String getName(){
+    public String getName(){  //get user name
         return name;
     }
     
-    public String getEmail(){
+    public String getEmail(){  //getting user email
         
         return email;
     }
-    public String getPassword() {
+    public String getPassword() { //getting user password
         return password;
     }   
-    public String getLocation() {
+    public String getLocation() {  //getting user location
         return location;
     }
      
-    public String getPhoneNum() {
+    public String getPhoneNum() {  //getting user phone number
         return phoneNum;
     }
     

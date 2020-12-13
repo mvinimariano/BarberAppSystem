@@ -29,11 +29,13 @@ public class MyBookingsController  implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
                if(e.getActionCommand().equals("b5")){
+                   //dispose this frame and opens a new one
                       mybookingsview.dispose();
             new FeedbackController();
            
        }          
                     if(e.getActionCommand().equals("b3")){
+                        //dispose this frame and opens a new one
                       mybookingsview.dispose();
                       new HomeCustumerController();
  
@@ -42,6 +44,7 @@ public class MyBookingsController  implements ActionListener{
         
         
         if(e.getActionCommand().equals("b4")){
+            //option pane asking with the user wants to cancel the booking
        
   int option = JOptionPane.showConfirmDialog(mybookingsview, "Cancel your booking?", "Cancel your booking", JOptionPane.YES_NO_OPTION);
 

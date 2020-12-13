@@ -19,6 +19,7 @@ public class AvailabilityServiceController implements ActionListener {
     
     
         public AvailabilityServiceController(){
+            //calling the view in this class
         this.availabilityserviceview = availabilityserviceview; 
         this.availabilityserviceview = new AvailabilityServiceView(this);
 
@@ -28,6 +29,7 @@ public class AvailabilityServiceController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+            //adding the action to the buttons
              if(e.getActionCommand().equals("b5")){
         JOptionPane.showMessageDialog(availabilityserviceview,
         "You have submited your availability!",
@@ -35,11 +37,13 @@ public class AvailabilityServiceController implements ActionListener {
         JOptionPane.INFORMATION_MESSAGE);
          } 
                        if(e.getActionCommand().equals("b3")){
+                           //if you click in the button it dispose the frame and open a new one
                       availabilityserviceview.dispose();
                       new UpcomingServiceController();
            
        } 
                        if(e.getActionCommand().equals("b4")){
+                           //if you click in the button it dispose the frame and open a new one
                       availabilityserviceview.dispose();
                       new AppointStatusController();
            
